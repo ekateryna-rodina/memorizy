@@ -45,10 +45,9 @@ export const register = asyncHandler(async (req, res) => {
         const savedUser = await newUser.save();
         // issue jwt
         const { token, expires, iat } = await issueJWT(savedUser);
-        const { name, email } = savedUser;
         res.status(200).json({
           success: true,
-          user: { name, email },
+          user: { name: savedUser.name, email: savedUser.email },
           token: token,
           issued: iat,
           expiresIn: expires,

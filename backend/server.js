@@ -10,6 +10,12 @@ import { auth } from "./middleware/auth.js";
 // init app
 const app = express();
 
+// Pass the global passport object into the configuration function
+auth(passport);
+
+// This will initialize the passport object on every request
+app.use(passport.initialize());
+
 // dotenv
 dotenv.config();
 
@@ -20,17 +26,20 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Pass the global passport object into the configuration function
-auth(passport);
-
-// This will initialize the passport object on every request
-app.use(passport.initialize());
-
 // log
 app.use(logger("dev"));
 
 // routes
 app.use("/api/users", userRoutes);
+
+// test
+app.get(
+  "/api/users/protected",
+  passport.authenticate("jwt", { session: false }),
+  (req, res, next) => {
+    res.status(200).json("you are here");
+  }
+);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
