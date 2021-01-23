@@ -22,13 +22,23 @@ const userSchema = mongoose.Schema(
   }
 );
 
+// hash password
 userSchema.pre("save", async function (next) {
   const user = this;
-  const hash = await bcrypt.hash(this.password, 10);
+  // do not encrypt if password is not modified
+  if (!user.isModified("password")) {
+    next();
+  }
 
-  this.password = hash;
+  const hash = await bcrypt.hash(user.password, 10);
+  user.password = hash;
   next();
 });
+
+// compare entered and hashed passwords
+userSchema.methods.matchPassword = async function (enteredPass) {
+  return await bcrypt.compare(enteredPass, this.password);
+};
 
 const User = mongoose.model("User", userSchema);
 export default User;
