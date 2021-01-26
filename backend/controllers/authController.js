@@ -3,10 +3,10 @@ import asyncHandler from "express-async-handler";
 import issueJWT from "../utils/auth.js";
 
 export const register = asyncHandler(async (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { firstName, lastName, email, password, password2 } = req.body;
   let errors = [];
   // validation of required fields
-  if (!name || !email || !password) {
+  if (!firstName || !email || !password) {
     errors.push({ msg: "Please fill all the fields" });
   }
   // validation of passwords match
@@ -21,9 +21,10 @@ export const register = asyncHandler(async (req, res) => {
   }
 
   if (errors.length > 0) {
-    res
-      .status(400)
-      .json({ errors: errors, data: { name, email, password, password2 } });
+    res.status(400).json({
+      errors: errors,
+      data: { firstName, lastName, email, password, password2 },
+    });
   } else {
     // create new user
     try {
@@ -31,12 +32,14 @@ export const register = asyncHandler(async (req, res) => {
       const userExists = await User.findOne({ email: email });
       if (userExists) {
         errors.push({ msg: "User already exists" });
-        res
-          .status(400)
-          .json({ errors: errors, data: { name, email, password, password2 } });
+        res.status(400).json({
+          errors: errors,
+          data: { firstName, lastName, email, password, password2 },
+        });
       } else {
         const newUser = new User({
-          name,
+          firstName,
+          lastName,
           email,
           password,
         });
@@ -47,7 +50,11 @@ export const register = asyncHandler(async (req, res) => {
         const { token, expires, iat } = await issueJWT(savedUser);
         res.status(200).json({
           success: true,
-          user: { name: savedUser.name, email: savedUser.email },
+          user: {
+            firstName: savedUser.firstName,
+            lastName: savedUser.lastName,
+            email: savedUser.email,
+          },
           token: token,
           issued: iat,
           expiresIn: expires,

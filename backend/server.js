@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import logger from "morgan";
 import passport from "passport";
 import userRoutes from "./routes/userRoutes.js";
+import cardRoutes from "./routes/cardRoutes.js";
 import connectDB from "./config/db.js";
 import { auth } from "./middleware/auth.js";
 
@@ -39,6 +40,11 @@ app.get(
   (req, res, next) => {
     res.status(200).json("you are here");
   }
+);
+app.use(
+  "/api/cards",
+  passport.authenticate("jwt", { session: false }),
+  cardRoutes
 );
 
 const PORT = process.env.PORT || 5000;
