@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const { Schema, Types } = mongoose;
+const { Schema } = mongoose;
 
 // create schema
 const cardSchema = mongoose.Schema(

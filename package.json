@@ -8,11 +8,13 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server-test": "mocha 'backend/test' --timeout 10000 --exit"
   },
   "author": "Kateryna Rodina",
   "license": "ISC",
   "dependencies": {
+    "@types/mocha": "^8.2.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -27,6 +29,11 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "colors": "^1.4.0"
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "colors": "^1.4.0",
+    "esm": "^3.2.25",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   }
 }

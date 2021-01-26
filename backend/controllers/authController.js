@@ -6,7 +6,7 @@ export const register = asyncHandler(async (req, res) => {
   const { firstName, lastName, email, password, password2 } = req.body;
   let errors = [];
   // validation of required fields
-  if (!firstName || !email || !password) {
+  if (!firstName || !email || !password || !password2) {
     errors.push({ msg: "Please fill all the fields" });
   }
   // validation of passwords match
@@ -14,7 +14,7 @@ export const register = asyncHandler(async (req, res) => {
     errors.push({ msg: "Passwords do not match" });
   }
   // validation of passwords lenght
-  if (password.length < 6) {
+  if (password && password.length < 6) {
     errors.push({
       msg: "Passwords is required to be at least 6 characters long",
     });

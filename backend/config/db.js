@@ -1,9 +1,20 @@
 import mongoose from "mongoose";
 import colors from "colors";
 
+const getConnectionString = () => {
+  switch (process.env.NODE_ENV) {
+    case "development":
+      return process.env.MONGO_DB;
+    case "test":
+      return process.env.MONGO_DB_TEST;
+    case "production":
+      return process.env.MONGO_DB_PROD;
+  }
+};
 export const connectDB = async () => {
   try {
-    const db = await mongoose.connect(process.env.MONGO_DB, {
+    const connectionString = getConnectionString();
+    const db = await mongoose.connect(connectionString, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
