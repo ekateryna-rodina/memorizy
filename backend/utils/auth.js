@@ -29,4 +29,4 @@ const issueJWT = async (user) => {
   };
 };
 
-export default issueJWT;
+export default { issueJWT };

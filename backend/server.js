@@ -5,7 +5,7 @@ import logger from "morgan";
 import passport from "passport";
 import userRoutes from "./routes/userRoutes.js";
 import cardRoutes from "./routes/cardRoutes.js";
-import connectDB from "./config/db.js";
+import { connectDB } from "./config/db.js";
 import { auth } from "./middleware/auth.js";
 
 // init app

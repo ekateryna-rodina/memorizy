@@ -23,6 +23,7 @@
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.13",
+    "mongoose-schema-extend": "^0.2.2",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -34,6 +35,9 @@
     "colors": "^1.4.0",
     "esm": "^3.2.25",
     "mocha": "^8.2.1",
-    "nyc": "^15.1.0"
+    "mockgoose": "^8.0.4",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.4",
+    "supertest": "^6.1.3"
   }
 }

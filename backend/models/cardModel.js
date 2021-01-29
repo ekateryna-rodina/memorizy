@@ -39,6 +39,26 @@ const cardSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    scoring: {
+      totalTries: { type: Number, required: true, default: 0 },
+      successTries: { type: Number, required: true, default: 0 },
+    },
+    spacedRepetition: {
+      status: {
+        type: String,
+        enum: ["pending", "processing", "processed"],
+        default: "pending",
+      },
+      lastInterval: {
+        type: Number,
+        default: 14400,
+      },
+      lastResult: {
+        type: String,
+        enum: ["success", "fail"],
+        default: "fail",
+      },
+    },
   },
   {
     timestamps: true,

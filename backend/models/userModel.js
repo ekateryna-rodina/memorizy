@@ -3,12 +3,9 @@ import bcrypt from "bcrypt";
 // create schema
 const userSchema = mongoose.Schema(
   {
-    firstName: {
+    userName: {
       type: String,
       required: true,
-    },
-    lastName: {
-      type: String,
     },
     email: {
       type: String,
