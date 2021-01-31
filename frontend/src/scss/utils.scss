@@ -1,0 +1,35 @@
+@import "config";
+
+// container
+.container {
+  max-width: $max-width;
+  margin: auto;
+  margin-top: 5rem;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+// backrounds
+.bg {
+  &-primary {
+    @include set-background($primary-color);
+  }
+  &-light {
+    @include set-background($light-color);
+    border: $light-grey-color 1px solid;
+  }
+  &-dark {
+    @include set-background($dark-color);
+  }
+  &-danger {
+    @include set-background($danger-color);
+  }
+  &-success {
+    @include set-background($success-color);
+  }
+  &-white {
+    @include set-background($white-color);
+    border: $light-grey-color 1px solid;
+  }
+}

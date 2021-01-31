@@ -8,6 +8,12 @@ node_modules
 /.pnp
 .pnp.js
 
+# dependencies
+/frontend/node_modules
+
+# production
+/frontend/build
+
 # testing
 /coverage
 

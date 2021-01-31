@@ -1,0 +1,30 @@
+@import "config";
+/* Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", Sans-Serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: $white-color;
+  color: $black-color;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+/* Login and Register */
