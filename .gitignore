@@ -13,7 +13,7 @@ node_modules
 
 # production
 /frontend/build
-
+/frontend/.eslintcache
 # testing
 /coverage
 
