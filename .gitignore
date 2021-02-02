@@ -14,11 +14,9 @@ node_modules
 # production
 /frontend/build
 /frontend/.eslintcache
+/build
 # testing
 /coverage
-
-# production
-/build
 
 # misc
 .DS_Store

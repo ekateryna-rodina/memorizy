@@ -8,7 +8,7 @@ function App() {
   return (
     <Fragment>
       <main>
-        <div className="container">
+        <div className="wrapper">
           <Router>
             <Route path="/" component={HomeScreen} />
             <Route path="/auth" component={AuthScreen} />
